@@ -2,10 +2,11 @@
 close all; clear; clc;
 
 %% Input args (and print them)
-%k = 3;     % number of clusters
+k=input('Welcome to KMeans Simulation, Enter value for k: ');
+
 %numP = 200; % number of points
-%xMax = 100; % x between 0 and xMax
-%yMax = 100; % y between 0 and yMax
+xMax = 100; % x between 0 and xMax
+yMax = 100; % y between 0 and yMax
 
 %% Create random data points
 
@@ -19,6 +20,7 @@ ax = gca;
 fig = ancestor(ax, 'figure');
 points = [];
 hold(ax, 'on');
+axis([0 xMax 0 yMax]);
 while true
   c = ginput(1);
   sel = get(fig, 'SelectionType');
@@ -32,11 +34,10 @@ points=points.';
 numP = length(points);
 xP = points(1,:);
 yP = points(2,:);
-M = max(points,[],2);
-xMax = M(1);
-yMax = M(2);
+%M = max(points,[],2);
+%xMax = M(1);
+%yMax = M(2);
 
-k=4;
 fprintf('k-Means will run with %d clusters and %d data points.\n',k,numP);
 %% run kMeans and measure/print performance
 tic;
